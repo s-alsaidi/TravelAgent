@@ -1,0 +1,494 @@
+{% extends 'travelAgentMain/base.html' %} 
+{% load static %}   
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}}">
+        {{message}}
+    </div>
+{% endfor  %}
+
+{% endif %}
+
+<section id="hero2" style="padding-top: 1px; padding-bottom:10px;" > 
+  <!-- Carousel -->
+  <div id="demo" class="carousel slide" data-bs-ride="carousel" style="margin:0px"> 
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" ></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+    </div>       
+    <div class="carousel-inner" style="margin:0px">
+      <div class="carousel-item active">
+        <img src="{% static 'assets/img/baner/1.jpeg' %}" alt="" class="d-block" style="width:100%;height:auto;margin:0px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'assets/img/baner/2.jpeg' %}" alt="" class="d-block" style="width:100%;height:auto; margin:0px">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'assets/img/baner/3.jpeg' %}" alt="" class="d-block" style="width:100%;height:auto;margin:0px">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'assets/img/baner/4.jpeg' %}" alt="" class="d-block" style="width:100%;height:auto;margin:0px">
+      </div>
+    </div> 
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>   
+<!-- End Carousel -->
+</section><!-- End Hero -->
+<main id="main"> 
+    <!-- ======= Cta Section ======= -->
+<section id="notify" class="breadcrumbs section-bg">
+  <div class="container" data-aos="zoom-in"> 
+    <div class="row" style="text-align: center;">
+      <div class="col-lg-4 col-md-12 col-sm-12"></div>
+      <div class="col-lg-4 col-md-12 col-sm-12">
+      <h3 style="color: #cc1616;"> خدمة ابراج اونلاين </h3>
+      <p> الان يمكنك الاستعلام وتعقب عن مدى حالة وتقدم معاملتك</p>
+     
+      <form method="post">
+        {% csrf_token %}       
+          <div class="form-outline mb-4">
+            <input  type="number" id="id" name="id" class="form-control" placeholder="ادخل رقم الجواز"/>              
+          </div>             
+          <button type="submit" style="background-color: #cc1616;border-radius: 5px;border-color: #cc1616; width: 150px;" class="btn-danger" href="#"> استعلام</button>       
+      </form>
+        {% if state %}
+      </br> 
+      <p style=" color: #600af5;font-size: 35px;">  {{ state.get_state_display }}</p>
+          {% endif %}
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12"></div>
+       <!--  <div class="row">
+     <form>
+       
+        <div class="input-group"> 
+          <input type="text" class="form-control" placeholder="ادخل رقم الجواز">
+          <div class="input-group" style="text-align: center;">
+             <button style="background-color: #cc1616;border-radius: 5px;border-color: #cc1616; width: 150px;" class="btn-danger" href="#"> استعلام</button>
+          </div>   
+        </div>
+
+      </form>
+     </div> -->
+    <!-- <p> <input  class=".input-group-sm" type="number" value="" placeholder="ادخل رقم الجواز"></p>
+      <button style="background-color: #cc1616;border-radius: 5px;border-color: #cc1616; width: 150px;" class="btn-danger" href="#"> استعلام</button> -->
+      <!-- <a class="btn-danger" href="#"> استعلام</a> -->
+    </div> 
+  </div>
+ </section><!-- End Cta Section --> 
+<!-- ======= Cta Section ======= -->
+<section id="cta" class="cta">
+<div class="container" data-aos="zoom-in">
+
+  <div class="text-center">
+    <h3>ابرامج مكة   للسفريات والسياحة</h3>
+    <p>  تأسست وكالة ابراج مكه  للسفريات  والسياحة سنة 2017.م وفى وقت قصير اصبحت واحدة من ابرز مقدمي خدمات تخليص المعاملات والاسم الاكثر ثقة فى هذا المجال وفضل هذا النجاح يعود الى الرؤية التى لا تعتمد على الربح وانما تعتمد على ارضاء الله ثم كافة العملاء</p>
+    <!-- <a class="cta-btn" href="#">Call To Action</a> -->
+  </div>
+
+</div> 
+</section>
+<!-- End Cta Section --> 
+</br>
+<!-- ======= Cta Section ======= -->
+<section id="tafwed" class="cta2" style="background-color:yellow;">
+<div class="container" data-aos="zoom-in">
+
+  <div class="text-center">
+  <h3>تفويض اونلاين</h3>
+  <p>  الان يمكن اضافة اشخاص وتفويض عبر الموقع مباشره </p>
+      <a class="cta-btn" href="{% url 'mandate' %}">اضافة</a>  
+  </div>
+
+</div>
+</section><!-- End Cta Section --> 
+
+<!-- ======= Services Section ======= -->
+<section id="services" class="services">
+<div class="container">
+  <div class="section-title">
+    <span>خدماتنا</span>
+    <h2>خدماتنا</h2>
+    <p>تنميز بالدقة والسرعة وضبط المواعيد</p>
+  </div>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+      <div class="icon-box" style="width: 400px;">
+        <div class="icon"><i class="bx bxl-dribbble"></i></div>
+        <h4><a href="{% url 'work' %}">فيزة العمل</a></h4>
+        <h4> <div class="btn-wrap">
+          <!-- <button type="submit" class="btn-buy"> المتطلبات</button>   -->
+          <a href="{% url 'work' %}" class="btn-buy" style="font-size: small;">المتطلبات</a>
+        </div></h4>
+        <!-- <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p> -->
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
+      <div class="icon-box" style="width: 400px;">
+        <div class="icon"><i class="bx bx-file"></i></div>
+        <h4><a href="{% url 'family' %}">الزيارة العائلية</a></h4>
+        <h4> <div class="btn-wrap">              
+          <a href="{% url 'family' %}" class="btn-buy" style="font-size: small;">المتطلبات</a>
+        </div></h4>
+        <!-- <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p> -->
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+      <div class="icon-box" style="width: 400px;">
+        <div class="icon"><i class="bx bx-tachometer"></i></div>
+        <h4><a href="{% url 'ekamah' %}">الإقامة العائلية</a></h4>
+        <h4> <div class="btn-wrap">              
+          <a href="{% url 'ekamah' %}" class="btn-buy" style="font-size: small;">المتطلبات</a>
+        </div></h4>
+        <!-- <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p> -->
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="450">
+      <div class="icon-box" style="width: 400px;">
+        <div class="icon"><i class="bx bx-world"></i></div>
+        <h4><a href="">  النقل الدولي والداخلي</a></h4>
+        <h4> <div class="btn-wrap">              
+          <a href="" class="btn-buy" style="font-size: small;">قريبا</a>
+        </div></h4>
+        <!-- <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p> -->
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
+      <div class="icon-box" style="width: 400px;">
+        <div class="icon"><i class="bx bx-slideshow"></i></div>
+        <h4><a href=""> حجــــز تذاكــــر الطيـــران</a></h4>
+        <h4> <div class="btn-wrap">              
+          <a href="" class="btn-buy" style="font-size: small;">قريبا</a>
+        </div></h4>
+        <!-- <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p> -->
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
+      <div class="icon-box" style="width: 400px;">
+        <div class="icon"><i class="bx bx-arch"></i></div>
+        <h4><a href="">الحــج والعمـرة</a></h4>
+        <h4> <div class="btn-wrap">              
+          <a href="" class="btn-buy" style="font-size: small;">قريبا</a>
+        </div></h4>
+        <!-- <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p> -->
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section><!-- End Services Section -->
+<!-- ======= Pricing Section ======= -->
+<section id="pricing" class="pricing">
+<div class="container">
+
+  <div class="section-title">
+    <span>الاسعار</span>
+    <h2>الاسعار</h2>
+    <!-- <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p> -->
+  </div>
+
+  <div class="row">
+
+    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+      <div class="box">
+        <h3>فيزة العمل</h3>
+        <h4><sup>RS</sup>600<span> </span></h4>
+       
+        <div class="btn-wrap">
+          <a href="#" class="btn-buy">600 ر.س</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="150">
+      <div class="box">
+        <h3>الزيارة العائلية</h3>
+        <h4><sup>RS</sup>800<span> </span></h4>
+       
+        <div class="btn-wrap">
+          <a href="#" class="btn-buy">800 ر.س</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
+      <div class="box">
+        <h3>الإقامة العائلية</h3>
+        <h4><sup>RS</sup>600<span></span></h4>
+      
+        <div class="btn-wrap">
+          <a href="#" class="btn-buy"> 600 ر.س  </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
+      <div class="box">
+        <h3>تذاكر الطيران</h3>
+        <h4><sup></sup>قريبا<span></span></h4>
+        
+        <div class="btn-wrap">
+          <a href="#" class="btn-buy"> soon  </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</section><!-- End Pricing Section -->
+
+<!-- ======= Team Section ======= -->
+<section id="team" class="team">
+<div class="container">
+
+  <div class="section-title">
+    <span>فــــروع الوكالـــة</span>
+    <h2>فروعنا</h2>
+    <!-- <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p> -->
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+      <div class="member" style="width: 580px;">
+        <img src="{% static 'assets/img/team/team-1.jpg' %}" alt="">
+        <h4>صنعاء</h4>
+        <span>شارع القدس امام السفارة السعودية</span>
+        <!-- <p>
+          Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+        </p> -->
+        {% comment %} <div class="social">
+          <a href=""><i class="bi bi-twitter"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div> {% endcomment %}
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 d-flex align-items-stretch" data-aos="zoom-in">
+      <div class="member" style="width: 580px;">
+        <img src="{% static 'assets/img/team/team-2.jpg' %}" alt="">
+        <h4>عدن</h4>
+        <span>  جولة السفينة خلف شركة النور للنقل</span>
+        <!-- <p>
+          Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+        </p> -->
+        {% comment %} <div class="social">
+          <a href=""><i class="bi bi-twitter"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div> {% endcomment %}
+      </div>
+    </div>
+
+   
+
+  </div>
+
+</div>
+</section><!-- End Team Section --> 
+<!-- ======= Contact Section ======= -->
+<!-- ======= Team Section ======= -->
+<section id="team" class="team">
+<div class="container">
+
+  <div class="section-title">
+    <span>مكاتب الاستقدام</span>
+
+    <h2>مكاتب الاستقدام</h2>
+    <p>مكاتب الاستقدام المتعاقدة مع أبراج مكة في السعودية</p>
+  </div>
+
+  <div class="row">
+    <table class="table table-hover" style="padding: 30px;">
+      <thead>
+        <tr>
+          <th>المكتب</th>
+          <th>العنوان</th>
+          <th>الرقم</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>الثقه المستديمة للاستقدام </td>
+          <td>الخرج شارع 17</td>
+          <td>0553565239</td>
+        </tr>
+        <tr>
+          <td>عذوبة للاستقدام</td>
+          <td>بريده شارع البخاري</td>
+          <td>0505453396</td>
+        </tr>
+        <tr>
+          <td>المكتب المهني للاستقدام </td>
+          <td>الدمام شارع الظهران</td>
+          <td>0545709999</td>
+        </tr>
+        <tr>
+          <td> فن الاختيار للاستقدام </td>
+          <td>سكاكا الجوف </td>
+          <td>0554970515</td>
+        </tr>
+        <tr>
+          <td> عبدالسميع الحازمي للاستقدام  </td>
+          <td> صبيا </td>
+          <td>050769999</td>
+        </tr>           
+        <tr>
+          <td> مشاري العنزي للاستقدام </td>
+          <td> الرياض شارع النجاح</td>
+          <td>0538003663</td>
+        </tr>
+        <tr>
+          <td> انحاء اسياء للاستقدام </td>
+          <td>الرياض حي النهظة  </td>
+          <td>0538129888 </td>
+        </tr>
+        <tr>
+          <td> مكتب القاري للاستقدام </td>
+          <td>ابو عريش </td>
+          <td>0542771188 </td>
+        </tr>
+        <tr>
+          <td> مكتب بدر المنجز للاستقدام </td>
+          <td>  الرياض شارع القلم</td>
+          <td>0553722556 </td>
+        </tr>
+        <tr>
+          <td>مكتب نور نجران للاستقدام  </td>
+          <td> نجران البلد</td>
+          <td>0502122240 </td>
+        </tr>
+        <tr>
+          <td>  مكتب القارات للاستقدام</td>
+          <td>  جدة الصفاء </td>
+          <td>0561429993 </td>
+        </tr>
+        <tr>
+          <td> مكتب أيادي  الامل للاستقدام </td>
+          <td>جدة حي الصفاء </td>
+          <td>0582223848 </td>
+        </tr>
+        <tr>
+          <td> مكتب أيادي  الامل للاستقدام </td>
+          <td> جدة حي الصفاء</td>
+          <td>0582223848 </td>
+        </tr>
+        <tr>
+          <td> مكتب قوافل للاستقدام </td>
+          <td>الرياض حي الياسمين  </td>
+          <td>0505618006 </td>
+        </tr>
+        <tr>
+          <td> مكتب سمو للاستقدام </td>
+          <td>الرياض الدائري الغربي</td>
+          <td> 0509999239</td>
+        </tr>
+        <tr>
+          <td>  </td>
+          <td> </td>
+          <td> </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+</section><!-- End Team Section --> 
+<!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+<div class="container">
+
+  <div class="section-title">
+    <span>تواصل معنا</span>
+    <h2>تواصل معنا</h2>
+    <!-- <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p> -->
+  </div>
+
+  <div class="row" data-aos="fade-up">
+    <div class="col-lg-6">
+      <div class="info-box mb-4">
+        <i class="bx bx-map"></i>
+        <h3>العنوان </h3>
+        <p>صنعاء شارع القدس</p>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="info-box  mb-4">
+        <i class="bx bx-envelope"></i>
+        <h3> البريد الالكتروني</h3>
+        <p>abrajmahka@gmail.com</p>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="info-box  mb-4">
+        <i class="bx bx-phone-call"></i>
+        <h3> الهاتف</h3>
+        <p>00967-776422223</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" data-aos="fade-up">
+
+    <div class="col-lg-6 ">
+      <!-- <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe> -->
+    <iframe class="mb-4 mb-lg-0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15390.970776884671!2d44.2051135!3d15.3362122!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x43096d4dfb83df1a!2z2YXZg9iq2Kgg2KfYqNix2KfYrCDZhdmD2Yc!5e0!3m2!1sar!2s!4v1648857363961!5m2!1sar!2s" frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15390.970776884671!2d44.2051135!3d15.3362122!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x43096d4dfb83df1a!2z2YXZg9iq2Kgg2KfYqNix2KfYrCDZhdmD2Yc!5e0!3m2!1sar!2s!4v1648857363961!5m2!1sar!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+
+    </div>
+
+    <div class="col-lg-6">
+      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+        <div class="row">
+          <div class="col-md-6 form-group">
+            <input type="text" name="name" class="form-control" id="name" placeholder="الاسم" required>
+          </div>
+          <div class="col-md-6 form-group mt-3 mt-md-0">
+            <input type="email" class="form-control" name="email" id="email" placeholder="الايميل" required>
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <input type="text" class="form-control" name="subject" id="subject" placeholder="الموضوع" required>
+        </div>
+        <div class="form-group mt-3">
+          <textarea class="form-control" name="message" rows="5" placeholder="الرسالة" required></textarea>
+        </div>
+        <div class="my-3">
+          <div class="loading">Loading</div>
+          <div class="error-message"></div>
+          <div class="sent-message">Your message has been sent. Thank you!</div>
+        </div>
+        <div class="text-center"><button type="submit">ارسال</button></div>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+</section><!-- End Contact Section --> 
+
+
+{% endblock content %}
+

@@ -1,0 +1,1914 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <!-- <link href="print_style.css" rel="stylesheet"> -->
+    <meta charset="utf-8">
+    {% load static %}
+
+    <!-- Load paper.css for happy printing -->
+    <!-- <link rel="stylesheet" href="paper.css"> -->
+    <!-- <link rel="stylesheet" href="normalize.css"> -->
+
+    <!-- Set page size here: A5, A4 or A3 -->
+    <!-- Set also "landscape" if you need -->
+    <style>
+        
+        table, th, td {
+            font-size: 12px;
+        }
+        
+        th, td {
+        
+            text-align: center;
+            padding: 2px !important;
+        }
+        
+        .t-center {
+            text-align: center;
+        }
+        
+        .t-left {
+            text-align: left;
+        }
+        
+        .bgcolor {
+            background: #f1f1f1;
+        }
+    </style>
+ <style>
+        @page {
+        size: A4 portrait;
+        margin-top: 8px;
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+    @page { margin: 0 }
+body { 
+    direction: rtl;
+    text-align: right;
+    margin: 0 }
+.sheet {
+  margin: 0;
+  overflow:auto;
+  position: relative;
+  box-sizing: border-box;
+  page-break-after: always;
+}
+
+/** Paper sizes **/
+body.A3           .sheet { width: 297mm; height: 419mm }
+body.A3.landscape .sheet { width: 420mm; height: 296mm }
+body.A4           .sheet { width: 210mm;}
+body.A4.landscape .sheet { width: 343mm; }
+body.A5           .sheet { width: 148mm; height: 209mm }
+body.A5.landscape .sheet { width: 210mm; height: 147mm }
+
+/** Padding area **/
+.sheet.padding-10mm { padding: 5mm }
+.sheet.padding-15mm { padding: 15mm }
+.sheet.padding-20mm { padding: 20mm }
+.sheet.padding-25mm { padding: 25mm }
+
+/** For screen preview **/
+@media screen {
+  body { background: #e0e0e0 }
+  .sheet {
+    background: white;
+    box-shadow: 0 .5mm 2mm rgba(0,0,0,.3);
+    margin: 5mm;
+  }
+}
+
+/** Fix for Chrome issue #273306 **/
+@media print {
+           body.A3.landscape { width: 420mm }
+  body.A3, body.A4.landscape { width: 335mm }
+  body.A4, body.A5.landscape { width: 210mm }
+  body.A5                    { width: 148mm }
+}
+
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Neucha|Patrick+Hand+SC);
+.text-primary {
+  color: #41403e
+}
+.background-primary {
+  background-color: #c1c0bd
+}
+.text-secondary {
+  color: #0071de
+}
+.background-secondary {
+  background-color: #deefff
+}
+.text-success {
+  color: #86a361
+}
+.background-success {
+  background-color: #d0dbc2
+}
+.text-warning {
+  color: #ddcd45
+}
+.background-warning {
+  background-color: #f5f0c6
+}
+.text-danger {
+  color: #a7342d
+}
+.background-danger {
+  background-color: #f0cbc9
+}
+.text-muted {
+  color: #868e96
+}
+.background-muted {
+  background-color: #e6e7e9
+}
+/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%
+}
+body {
+  margin: 0
+}
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block
+}
+h1 {
+  font-size: 2em;
+  margin: .67em 0
+}
+figcaption,
+figure,
+main {
+  display: block
+}
+figure {
+  margin: 1em 40px
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible
+}
+pre {
+  font-family: monospace,monospace;
+  font-size: 1em
+}
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted
+}
+b,
+strong {
+  font-weight: inherit
+}
+b,
+strong {
+  font-weight: bolder
+}
+code,
+kbd,
+samp {
+  font-family: monospace,monospace;
+  font-size: 1em
+}
+dfn {
+  font-style: italic
+}
+mark {
+  background-color: #ff0;
+  color: #000
+}
+small {
+  font-size: 80%
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline
+}
+sub {
+  bottom: -.25em
+}
+sup {
+  top: -.5em
+}
+audio,
+video {
+  display: inline-block
+}
+audio:not([controls]) {
+  display: none;
+  height: 0
+}
+img {
+  border-style: none
+}
+svg:not(:root) {
+  overflow: hidden
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0
+}
+button,
+input {
+  overflow: visible
+}
+button,
+select {
+  text-transform: none
+}
+[type=reset],
+[type=submit],
+button,
+html [type=button] {
+  -webkit-appearance: button
+}
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner,
+button::-moz-focus-inner {
+  border-style: none;
+  padding: 0
+}
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring,
+button:-moz-focusring {
+  outline: 1px dotted ButtonText
+}
+fieldset {
+  padding: .35em .75em .625em
+}
+legend {
+  box-sizing: border-box;
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal
+}
+progress {
+  display: inline-block;
+  vertical-align: baseline
+}
+textarea {
+  overflow: auto
+}
+[type=checkbox],
+[type=radio] {
+  box-sizing: border-box;
+  padding: 0
+}
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto
+}
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px
+}
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit
+}
+details,
+menu {
+  display: block
+}
+summary {
+  display: list-item
+}
+canvas {
+  display: inline-block
+}
+template {
+  display: none
+}
+[hidden] {
+  display: none
+}
+html {
+  box-sizing: border-box
+}
+*,
+:after,
+:before {
+  box-sizing: inherit
+}
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  width: 100%
+}
+@media only screen and (max-width:992px) {
+  .container {
+    width: 85%
+  }
+}
+@media only screen and (max-width:480px) {
+  .container {
+    width: 90%
+  }
+}
+.section {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  word-wrap: break-word
+}
+.section::after {
+  color: #8f8d89;
+  content: '~~~';
+  display: block;
+  font-size: 1.5rem;
+  position: relative;
+  text-align: center
+}
+hr {
+  border: 0
+}
+hr::after {
+  color: #8f8d89;
+  content: '~~~';
+  display: block;
+  font-size: 1.5rem;
+  position: relative;
+  text-align: center;
+  top: -.75rem
+}
+.paper {
+  background-color: #fff;
+  border: 1px solid #c1c0bd;
+  box-shadow: -1px 5px 35px -9px rgba(0,0,0,.2);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 2rem
+}
+@media only screen and (max-width:480px) {
+  .paper {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 1rem;
+    width: 100%
+  }
+}
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: auto;
+  margin-right: auto
+}
+.row.flex-right {
+  justify-content: flex-end
+}
+.row.flex-center {
+  justify-content: center
+}
+.row.flex-edges {
+  justify-content: space-between
+}
+.row.flex-spaces {
+  justify-content: space-around
+}
+.row.flex-top {
+  align-items: flex-start
+}
+.row.flex-middle {
+  align-items: center
+}
+.row.flex-bottom {
+  align-items: flex-end
+}
+.col {
+  padding: 1rem
+}
+@media only screen and (max-width:768px) {
+  .col {
+    flex: 0 0 100%;
+    max-width: 100%
+  }
+}
+.col-fill {
+  flex: 1 1 0;
+  width: auto
+}
+@media only screen and (min-width:0) {
+  .col-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%
+  }
+  .col-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%
+  }
+  .col-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+  }
+  .col-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%
+  }
+  .col-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%
+  }
+  .col-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  .col-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%
+  }
+  .col-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%
+  }
+  .col-9 {
+    flex: 0 0 75%;
+    max-width: 75%
+  }
+  .col-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%
+  }
+  .col-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%
+  }
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%
+  }
+}
+@media only screen and (min-width:480px) {
+  .xs-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%
+  }
+  .xs-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%
+  }
+  .xs-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+  }
+  .xs-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%
+  }
+  .xs-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%
+  }
+  .xs-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  .xs-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%
+  }
+  .xs-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%
+  }
+  .xs-9 {
+    flex: 0 0 75%;
+    max-width: 75%
+  }
+  .xs-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%
+  }
+  .xs-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%
+  }
+  .xs-12 {
+    flex: 0 0 100%;
+    max-width: 100%
+  }
+}
+@media only screen and (min-width:768px) {
+  .sm-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%
+  }
+  .sm-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%
+  }
+  .sm-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+  }
+  .sm-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%
+  }
+  .sm-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%
+  }
+  .sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  .sm-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%
+  }
+  .sm-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%
+  }
+  .sm-9 {
+    flex: 0 0 75%;
+    max-width: 75%
+  }
+  .sm-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%
+  }
+  .sm-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%
+  }
+  .sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%
+  }
+}
+@media only screen and (min-width:992px) {
+  .md-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%
+  }
+  .md-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%
+  }
+  .md-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+  }
+  .md-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%
+  }
+  .md-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%
+  }
+  .md-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  .md-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%
+  }
+  .md-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%
+  }
+  .md-9 {
+    flex: 0 0 75%;
+    max-width: 75%
+  }
+  .md-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%
+  }
+  .md-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%
+  }
+  .md-12 {
+    flex: 0 0 100%;
+    max-width: 100%
+  }
+}
+@media only screen and (min-width:1200px) {
+  .lg-1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%
+  }
+  .lg-2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%
+  }
+  .lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%
+  }
+  .lg-4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%
+  }
+  .lg-5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%
+  }
+  .lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%
+  }
+  .lg-7 {
+    flex: 0 0 58.33333%;
+    max-width: 58.33333%
+  }
+  .lg-8 {
+    flex: 0 0 66.66667%;
+    max-width: 66.66667%
+  }
+  .lg-9 {
+    flex: 0 0 75%;
+    max-width: 75%
+  }
+  .lg-10 {
+    flex: 0 0 83.33333%;
+    max-width: 83.33333%
+  }
+  .lg-11 {
+    flex: 0 0 91.66667%;
+    max-width: 91.66667%
+  }
+  .lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%
+  }
+}
+.align-top {
+  align-self: flex-start
+}
+.align-middle {
+  align-self: center
+}
+.align-bottom {
+  align-self: flex-end
+}
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  position: relative;
+  width: 100%
+}
+@media only screen and (max-width:992px) {
+  .container {
+    width: 85%
+  }
+}
+@media only screen and (max-width:480px) {
+  .container {
+    width: 90%
+  }
+}
+code {
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  color: #0071de;
+  font-size: 80%;
+  padding: 2px 4px
+}
+kbd {
+  background-color: #41403e;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 80%;
+  padding: 2px 4px
+}
+pre {
+  background-color: #fafafa;
+  border: 1px solid #c1c0bd;
+  border-radius: 3px;
+  color: #41403e;
+  display: block;
+  font-size: 80%;
+  line-height: 1.5;
+  overflow-x: auto;
+  padding: 1em;
+  white-space: pre;
+  word-break: break-all;
+  word-wrap: break-word
+}
+pre code {
+  background: 0 0;
+  color: inherit;
+  display: block;
+  font-size: inherit;
+  padding: initial;
+  white-space: pre
+}
+html {
+  color: #41403e;
+  font-family: Neucha,sans-serif;
+  <!-- font-size: 20px -->
+}
+a,
+button,
+input,
+option,
+p,
+select,
+table,
+tbody,
+td,
+textarea,
+th,
+thead,
+tr {
+  font-family: Neucha,sans-serif
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Patrick Hand SC",sans-serif;
+  font-weight: 400
+}
+h1 {
+  font-size: 4rem
+}
+h2 {
+  font-size: 3rem
+}
+h3 {
+  font-size: 2rem
+}
+h4 {
+  font-size: 1.5rem
+}
+h5 {
+  font-size: 12px
+}
+h6 {
+  font-size: 10px;
+}
+.text-left {
+  text-align: left
+}
+.text-center {
+  text-align: center
+}
+.text-right {
+  text-align: right
+}
+img {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border: 2px solid #41403e;
+  display: block;
+  height: auto;
+  max-width: 100%
+}
+img.float-left {
+  float: left;
+  margin: 1rem 1rem 1rem 0
+}
+img.float-right {
+  float: right;
+  margin: 1rem 0 1rem 1rem
+}
+img.no-responsive {
+  display: initial;
+  height: initial;
+  max-width: initial
+}
+img.no-border {
+  border: 0;
+  border-radius: 0
+}
+ol {
+  list-style-type: decimal
+}
+ol ol {
+  list-style-type: upper-alpha
+}
+ol ol ol {
+  list-style-type: upper-roman
+}
+ol ol ol ol {
+  list-style-type: lower-alpha
+}
+ol ol ol ol ol {
+  list-style-type: lower-roman
+}
+ul {
+  list-style: none;
+  margin-left: 0
+}
+ul li::before {
+  content: "-"
+}
+ul li {
+  text-indent: -7px
+}
+ul li .badge,
+ul li [popover-bottom]::after,
+ul li [popover-left]::after,
+ul li [popover-right]::after,
+ul li [popover-top]::after {
+  text-indent: 0
+}
+ul li::before {
+  left: -7px;
+  position: relative
+}
+ul ul li::before {
+  content: "+"
+}
+ul ul ul li::before {
+  content: "~"
+}
+ul ul ul ul li::before {
+  content: "⤍"
+}
+ul ul ul ul ul li::before {
+  content: "⁎"
+}
+ul.inline li {
+  display: inline;
+  margin-left: 5px
+}
+table {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
+  width: 100%
+}
+@media only screen and (max-width:480px) {
+  table thead tr th {
+    padding: 2%
+  }
+  table tbody tr td {
+    padding: 2%
+  }
+}
+table thead tr th {
+  line-height: 1.5;
+  padding: 8px;
+  text-align: right;
+  vertical-align: bottom
+}
+table tbody tr td {
+  /*border-top: 1px dashed #d9d9d8;*/
+  line-height: 1.5;
+  padding: 8px;
+  vertical-align: top
+}
+table.table-hover tbody tr:hover {
+  color: #0071de
+}
+table.table-alternating tbody tr:nth-of-type(even) {
+  color: #82807c
+}
+.border {
+  border: 2px solid #41403e
+}
+.border,
+.border-1,
+.child-borders > :nth-child(6n+1) {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px
+}
+.border-2,
+.child-borders > :nth-child(6n+2) {
+  border-bottom-left-radius: 185px 25px;
+  border-bottom-right-radius: 20px 205px;
+  border-top-left-radius: 125px 25px;
+  border-top-right-radius: 10px 205px
+}
+.border-3,
+.child-borders > :nth-child(6n+3) {
+  border-bottom-left-radius: 225px 15px;
+  border-bottom-right-radius: 15px 255px;
+  border-top-left-radius: 15px 225px;
+  border-top-right-radius: 255px 15px
+}
+.border-4,
+.child-borders > :nth-child(6n+4) {
+  border-bottom-left-radius: 25px 115px;
+  border-bottom-right-radius: 155px 25px;
+  border-top-left-radius: 15px 225px;
+  border-top-right-radius: 25px 150px
+}
+.border-5,
+.child-borders > :nth-child(6n+5) {
+  border-bottom-left-radius: 20px 115px;
+  border-bottom-right-radius: 15px 105px;
+  border-top-left-radius: 250px 15px;
+  border-top-right-radius: 25px 80px
+}
+.border-6,
+.child-borders > :nth-child(6n+6) {
+  border-bottom-left-radius: 15px 225px;
+  border-bottom-right-radius: 20px 205px;
+  border-top-left-radius: 28px 125px;
+  border-top-right-radius: 100px 30px
+}
+.child-borders > * {
+  border: 2px solid #41403e
+}
+.border-white {
+  border-color: #fff
+}
+.border-dotted {
+  border-style: dotted
+}
+.border-dashed {
+  border-style: dashed
+}
+.border-thick {
+  border-width: 5px
+}
+.border-primary {
+  border-color: #41403e
+}
+.border-secondary {
+  border-color: #0071de
+}
+.border-success {
+  border-color: #86a361
+}
+.border-warning {
+  border-color: #ddcd45
+}
+.border-danger {
+  border-color: #a7342d
+}
+.border-muted {
+  border-color: #868e96
+}
+.shadow {
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2)
+}
+.shadow.shadow-large {
+  transition: all 235ms ease 0s;
+  box-shadow: 20px 38px 34px -26px rgba(0,0,0,.2)
+}
+.shadow.shadow-small {
+  transition: all 235ms ease 0s;
+  box-shadow: 10px 19px 17px -13px rgba(0,0,0,.2)
+}
+.shadow.shadow-hover:hover {
+  -webkit-transform: translate3d(0,2px,0);
+  transform: translate3d(0,2px,0);
+  box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3)
+}
+.child-shadows > * {
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2)
+}
+.child-shadows-hover > * {
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2)
+}
+.child-shadows-hover > :hover {
+  -webkit-transform: translate3d(0,2px,0);
+  transform: translate3d(0,2px,0);
+  box-shadow: 2px 8px 8px -5px rgba(0,0,0,.3)
+}
+.collapsible {
+  display: flex;
+  flex-direction: column
+}
+.collapsible:nth-of-type(1) {
+  border-top: 1px solid #e6e7e9
+}
+.collapsible .collapsible-body {
+  transition: all 235ms ease-in-out 0s;
+  background-color: rgba(204,204,204,.03);
+  border-bottom: 1px solid #e6e7e9;
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 .75rem
+}
+.collapsible input {
+  display: none
+}
+.collapsible input:checked + label {
+  color: #41403e
+}
+.collapsible input[id^=collapsible]:checked ~ div.collapsible-body {
+  margin: 0;
+  max-height: 960px;
+  opacity: 1;
+  padding: .75rem
+}
+.collapsible label {
+  border-bottom: 1px solid #e6e7e9;
+  color: #41403e;
+  display: inline-block;
+  font-weight: 600;
+  margin: 0 0 -1px;
+  padding: .75rem;
+  text-align: center
+}
+.collapsible label:hover {
+  color: #868e96;
+  cursor: pointer
+}
+.alert {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  border: 2px solid #41403e;
+  margin-bottom: 20px;
+  padding: 15px;
+  width: 100%
+}
+.alert.dismissible {
+  transition: all 235ms ease-in-out 0s;
+  display: flex;
+  justify-content: space-between;
+  max-height: 48rem;
+  overflow: hidden
+}
+.alert .btn-close {
+  transition: all 235ms ease-in-out 0s;
+  color: #5b5a57;
+  cursor: pointer;
+  margin-left: .75rem
+}
+.alert .btn-close:active,
+.alert .btn-close:focus,
+.alert .btn-close:hover {
+  color: #272625
+}
+.alert-primary {
+  background-color: #c1c0bd;
+  border-color: #41403e;
+  color: #41403e
+}
+.alert-primary .btn-close {
+  color: #5b5a57
+}
+.alert-primary .btn-close:active,
+.alert-primary .btn-close:focus,
+.alert-primary .btn-close:hover {
+  color: #272625
+}
+.alert-secondary {
+  background-color: #deefff;
+  border-color: #0071de;
+  color: #0071de
+}
+.alert-secondary .btn-close {
+  color: #128bff
+}
+.alert-secondary .btn-close:active,
+.alert-secondary .btn-close:focus,
+.alert-secondary .btn-close:hover {
+  color: #0057ab
+}
+.alert-success {
+  background-color: #d0dbc2;
+  border-color: #86a361;
+  color: #86a361
+}
+.alert-success .btn-close {
+  color: #9fb681
+}
+.alert-success .btn-close:active,
+.alert-success .btn-close:focus,
+.alert-success .btn-close:hover {
+  color: #6c844d
+}
+.alert-warning {
+  background-color: #f5f0c6;
+  border-color: #ddcd45;
+  color: #ddcd45
+}
+.alert-warning .btn-close {
+  color: #e5d970
+}
+.alert-warning .btn-close:active,
+.alert-warning .btn-close:focus,
+.alert-warning .btn-close:hover {
+  color: #cab925
+}
+.alert-danger {
+  background-color: #f0cbc9;
+  border-color: #a7342d;
+  color: #a7342d
+}
+.alert-danger .btn-close {
+  color: #cb453c
+}
+.alert-danger .btn-close:active,
+.alert-danger .btn-close:focus,
+.alert-danger .btn-close:hover {
+  color: #7f2722
+}
+.alert-muted {
+  background-color: #e6e7e9;
+  border-color: #868e96;
+  color: #868e96
+}
+.alert-muted .btn-close {
+  color: #a1a8ae
+}
+.alert-muted .btn-close:active,
+.alert-muted .btn-close:focus,
+.alert-muted .btn-close:hover {
+  color: #6c757d
+}
+.alert-state {
+  display: none
+}
+.alert-state:checked + .dismissible {
+  border-width: 0;
+  margin: 0;
+  max-height: 0;
+  opacity: 0;
+  padding-bottom: 0;
+  padding-top: 0
+}
+article .article-title {
+  font-size: 3rem
+}
+article .article-meta {
+  color: #868e96;
+  font-size: 15px
+}
+article .article-meta a {
+  background-image: none;
+  color: #41403e
+}
+article .article-meta a:hover {
+  color: rgba(0,0,0,.7)
+}
+article .text-lead {
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 35px
+}
+article button:not(:first-of-type) {
+  margin-left: 2rem
+}
+@media only screen and (max-width:480px) {
+  article button:not(:first-of-type) {
+    margin-left: 0
+  }
+}
+article p {
+  line-height: 1.6
+}
+.badge {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  background-color: #868e96;
+  border: 2px solid #41403e;
+  border-color: transparent;
+  color: #fff;
+  display: inline-block;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  padding: .25em .4em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap
+}
+.badge.primary {
+  background-color: #41403e
+}
+.badge.secondary {
+  background-color: #0071de
+}
+.badge.success {
+  background-color: #86a361
+}
+.badge.warning {
+  background-color: #ddcd45
+}
+.badge.danger {
+  background-color: #a7342d
+}
+.badge.muted {
+  background-color: #868e96
+}
+.paper-btn,
+[type=button],
+button {
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  transition: all 235ms ease 0s;
+  box-shadow: 15px 28px 25px -18px rgba(0,0,0,.2);
+  transition: all 235ms ease-in-out 0s;
+  align-self: center;
+  background: 0 0;
+  border: 2px solid #41403e;
+  color: #41403e;
+  cursor: pointer;
+  display: inline;
+  font-size: 1rem;
+  outline: 0;
+  padding: .75rem
+}
+@media only screen and (max-width:520px) {
+  .paper-btn,
+  [type=button],
+  button {
+    display: inline-block;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    text-align: center
+  }
+}
+.paper-btn.btn-large,
+[type=button].btn-large,
+button.btn-large {
+  transition: all 235ms ease 0s;
+  box-shadow: 20px 38px 34px -26px rgba(0,0,0,.2);
+  font-size: 2rem;
+  padding: 1rem
+}
+.paper-btn.btn-small,
+[type=button].btn-small,
+button.btn-small {
+  transition: all 235ms ease 0s;
+  box-shadow: 10px 19px 17px -13px rgba(0,0,0,.2);
+  font-size: .75rem;
+  padding: .5rem
+}
+.paper-btn.btn-block,
+[type=button].btn-block,
+button.btn-block {
+  display: block;
+  width: 100%
+}
+
+@media only screen and (max-width:768px) {
+  nav {
+    display: block
+  }
+}
+@media only screen and (max-width:768px) {
+  nav ul.inline li {
+    display: block;
+    margin: 1rem 0
+  }
+}
+@media only screen and (max-width:992px) {
+  nav ul {
+    text-align: center
+  }
+}
+@media only screen and (min-width:769px) {
+  nav .collapsible .collapsible-body,
+  nav .collapsible:nth-of-type(1) {
+    display: contents
+  }
+}
+@media only screen and (max-width:768px) {
+  nav .collapsible > button {
+    display: block
+  }
+}
+</style>
+    <style>
+        /* Three image containers (use 25% for four, and 50% for two, etc) */
+        .column {
+            float: left;
+            padding: 5px;
+        }
+
+        /* Clear floats after image containers */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        table tbody tr td {
+            padding: 2px !important;
+            line-height: 1.35 !important;
+        }
+
+        @media print {
+            .box-body {
+                margin-top: 10px !important;
+                margin-bottom: 10px;
+            }
+        }
+
+        /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
+ */
+
+html {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 2 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+  }
+  
+  /**
+   * Remove default margin.
+   */
+  
+  body {
+    margin: 0;
+  }
+  
+  /* HTML5 display definitions
+     ========================================================================== */
+  
+  /**
+   * Correct `block` display not defined for any HTML5 element in IE 8/9.
+   * Correct `block` display not defined for `details` or `summary` in IE 10/11
+   * and Firefox.
+   * Correct `block` display not defined for `main` in IE 11.
+   */
+  
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    display: block;
+  }
+  
+  /**
+   * 1. Correct `inline-block` display not defined in IE 8/9.
+   * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+   */
+  
+  audio,
+  canvas,
+  progress,
+  video {
+    display: inline-block; /* 1 */
+    vertical-align: baseline; /* 2 */
+  }
+  
+  /**
+   * Prevent modern browsers from displaying `audio` without controls.
+   * Remove excess height in iOS 5 devices.
+   */
+  
+  audio:not([controls]) {
+    display: none;
+    height: 0;
+  }
+  
+  /**
+   * Address `[hidden]` styling not present in IE 8/9/10.
+   * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
+   */
+  
+  [hidden],
+  template {
+    display: none;
+  }
+  
+  /* Links
+     ========================================================================== */
+  
+  /**
+   * Remove the gray background color from active links in IE 10.
+   */
+  
+  a {
+    background-color: transparent;
+  }
+  
+  /**
+   * Improve readability of focused elements when they are also in an
+   * active/hover state.
+   */
+  
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+  
+  /* Text-level semantics
+     ========================================================================== */
+  
+  /**
+   * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+   */
+  
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+  
+  /**
+   * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+   */
+  
+  b,
+  strong {
+    font-weight: bold;
+  }
+  
+  /**
+   * Address styling not present in Safari and Chrome.
+   */
+  
+  dfn {
+    font-style: italic;
+  }
+  
+  /**
+   * Address variable `h1` font-size and margin within `section` and `article`
+   * contexts in Firefox 4+, Safari, and Chrome.
+   */
+  
+  h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+  }
+  
+  /**
+   * Address styling not present in IE 8/9.
+   */
+  
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+  
+  /**
+   * Address inconsistent and variable font size in all browsers.
+   */
+  
+  small {
+    font-size: 80%;
+  }
+  
+  /**
+   * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+   */
+  
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  
+  sup {
+    top: -0.5em;
+  }
+  
+  sub {
+    bottom: -0.25em;
+  }
+  
+  /* Embedded content
+     ========================================================================== */
+  
+  /**
+   * Remove border when inside `a` element in IE 8/9/10.
+   */
+  
+  img {
+    border: 0;
+  }
+  
+  /**
+   * Correct overflow not hidden in IE 9/10/11.
+   */
+  
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  
+  /* Grouping content
+     ========================================================================== */
+  
+  /**
+   * Address margin not present in IE 8/9 and Safari.
+   */
+  
+  figure {
+    margin: 1em 40px;
+  }
+  
+  /**
+   * Address differences between Firefox and other browsers.
+   */
+  
+  hr {
+    box-sizing: content-box;
+    height: 0;
+  }
+  
+  /**
+   * Contain overflow in all browsers.
+   */
+  
+  pre {
+    overflow: auto;
+  }
+  
+  /**
+   * Address odd `em`-unit font size rendering in all browsers.
+   */
+  
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+  
+  /* Forms
+     ========================================================================== */
+  
+  /**
+   * Known limitation: by default, Chrome and Safari on OS X allow very limited
+   * styling of `select`, unless a `border` property is set.
+   */
+  
+  /**
+   * 1. Correct color not being inherited.
+   *    Known issue: affects color of disabled elements.
+   * 2. Correct font properties not being inherited.
+   * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+   */
+  
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    color: inherit; /* 1 */
+    font: inherit; /* 2 */
+    margin: 0; /* 3 */
+  }
+  
+  /**
+   * Address `overflow` set to `hidden` in IE 8/9/10/11.
+   */
+  
+  button {
+    overflow: visible;
+  }
+  
+  /**
+   * Address inconsistent `text-transform` inheritance for `button` and `select`.
+   * All other form control elements do not inherit `text-transform` values.
+   * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+   * Correct `select` style inheritance in Firefox.
+   */
+  
+  button,
+  select {
+    text-transform: none;
+  }
+  
+  /**
+   * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+   *    and `video` controls.
+   * 2. Correct inability to style clickable `input` types in iOS.
+   * 3. Improve usability and consistency of cursor style between image-type
+   *    `input` and others.
+   */
+  
+  button,
+  html input[type="button"], /* 1 */
+  input[type="reset"],
+  input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+  }
+  
+  /**
+   * Re-set default cursor for disabled elements.
+   */
+  
+  button[disabled],
+  html input[disabled] {
+    cursor: default;
+  }
+  
+  /**
+   * Remove inner padding and border in Firefox 4+.
+   */
+  
+  button::-moz-focus-inner,
+  input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+  
+  /**
+   * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+   * the UA stylesheet.
+   */
+  
+  input {
+    line-height: normal;
+  }
+  
+  /**
+   * It's recommended that you don't attempt to style these elements.
+   * Firefox's implementation doesn't respect box-sizing, padding, or width.
+   *
+   * 1. Address box sizing set to `content-box` in IE 8/9/10.
+   * 2. Remove excess padding in IE 8/9/10.
+   */
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+   * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+   * `font-size` values of the `input`, it causes the cursor style of the
+   * decrement button to change from `default` to `text`.
+   */
+  
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+  
+  /**
+   * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+   * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
+   */
+  
+  input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    box-sizing: content-box; /* 2 */
+  }
+  
+  /**
+   * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+   * Safari (but not Chrome) clips the cancel button when the search input has
+   * padding (and `textfield` appearance).
+   */
+  
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  
+  /**
+   * Define consistent border, margin, and padding.
+   */
+  
+  fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+  }
+  
+  /**
+   * 1. Correct `color` not being inherited in IE 8/9/10/11.
+   * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+   */
+  
+  legend {
+    border: 0; /* 1 */
+    padding: 0; /* 2 */
+  }
+  
+  /**
+   * Remove default vertical scrollbar in IE 8/9/10/11.
+   */
+  
+  textarea {
+    overflow: auto;
+  }
+  
+  /**
+   * Don't inherit the `font-weight` (applied by a rule above).
+   * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+   */
+  
+  optgroup {
+    font-weight: bold;
+  }
+  
+  /* Tables
+     ========================================================================== */
+  
+  /**
+   * Remove most spacing between table cells.
+   */
+  
+  table {
+     /**
+    *border-collapse: collapse; 
+    */
+    border-spacing: 0;
+  }
+  
+  td,
+  th {
+    padding: 0;
+  }
+    </style>
+
+    <style>
+        .center-me {
+            font-size: 15px;
+            margin: auto;
+            height: 10px;
+            max-width: 500px;
+            margin: 75px auto 40px auto;
+            display: flex;
+        }
+    </style>
+
+
+  </head>
+<!-- Set "A5", "A4" or "A3" for class name -->
+<!-- Set also "landscape" if you need -->
+<body class="A4 portrait">
+
+<!-- Each sheet element should have the class "sheet" -->
+<!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
+<section class="sheet" id="content-print">
+    <style>
+        table {
+            /*border-collapse: unset !important;*/
+        }
+    </style>
+
+    <div class="box-body" id="box_data" style="display: flex;padding: 2px;">
+        <div style="width: 100%;" class="col-md-12">
+            <div class="row">
+                <div class="col-lg-4" style="width: 70%;padding-left: 5px; margin-top: 0px; padding-top: 5px;">
+                    <h4 style="font-size: 15px;">ابراج مكه للسفريات وخدمات الحج والعمره</h4>
+                </div>
+                <div class="col-lg-8" style="width: 30%; padding-top: 10px;">
+                    <!-- <h5 style="font-size: 15px;margin-bottom: 5px;margin-top: 10px;">العنوان </h5> -->
+
+                    <p style="font-size: 12px;margin: 0;padding: 0;">صنعاء شارع القدس امام السفارة السعودية </p>
+
+                    <p style="font-size: 12px;margin: 0;padding-top: 3px;;">موبايل : 776422223-77923337  </p>
+                    <p style="font-size: 12px;margin: 0;padding: 0;">عدن : جوله السفينه خلف شركة النور </p>
+
+                    <p style="font-size: 12px;margin: 0;padding-top: 5px;;"> موبايل : 779322223</p>
+                    <br>
+                </div>
+            </div>
+        </br>
+            <div class="" style="display: flex;margin-top: -62px;">
+            <table border="1" style="width:30%">
+                <tr class="" style="background: rgba(217,225,242,1.0)">
+                    <td style="font-size: 14px;"  class="db text-center" width="100px">
+                        التاريخ 
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-size: 12px; text-align: center;">{% now ' h:m:s  Y-m-d' %}</td>
+                    
+                </tr>
+            </table>
+            </div>
+            <br>
+            <div style="text-align: center;">
+            <input style="width: 100%;color: red; text-align: center;" type="text" name="note" id="note" value="تقرير : العملاء" />
+            </div>
+            <br>
+            <table style="text-align: center; font-size: 9px;" width="100%" border="1px">
+                <!-- <tr style="background: rgba(217,225,242,1.0);"> -->
+                  <tr>
+                    <th class="text-center">#</th>
+                    <th class="text-center" colspan="3">الاسم</th>
+                    <th class="text-center">رقم الجواز</th>
+                    <th class="text-center">رقم التأشيرة</th>
+                    <th class="text-center">المهنة</th>
+                    <th class="text-center"> الوكيل</th>
+                    <th class="text-center">رقم السند</th>
+                    <th class="text-center">رقم الطلب</th>
+                    <th class="text-center">الموبايل</th>
+                    <th class="text-center">التأمين الصحي</th>
+                    <th class="text-center">المبلغ المتفق</th>
+                    <th class="text-center">المبلغ المتبقي</th>
+                    <th class="text-center">تاريخ الاظافة</th>
+                </tr>
+                <tbody>
+                    {% for customer in customers %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td colspan="3">{{ customer.name }}</td>
+                            <td>{{ customer.passport_No }}</td>
+                            <td>{{ customer.visa_No }}</td>
+                            <td>{{ customer.job }}</td>
+                            <!-- <td>{{ customer.visa_No.get_visa_type_display }}</td> -->
+                            <td>{{ customer.agent }}</td>
+                            <td>{{ customer.bond_No }}</td>
+                            <td>{{ customer.order_No }}</td>
+                            <td>{{ customer.mobile }}</td>
+                            <td>{{ customer.health_insurance }}</td>
+                            <td>{{ customer.cost }}</td>
+                            <td>{{ customer.Remaining_Amount }}</td> 
+                            <td>{{ customer.date_added|date:'d/m/Y' }}</td>
+
+                            
+
+                        </tr> 
+                        
+                        {% empty %}
+                        <tr>
+                            <td>0</td>
+                            <td colspan="3">-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr> 
+                       
+                    {% endfor %}
+                </tbody>
+                
+              
+                
+            </table>
+            <br>
+            <!-- <table width="94%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="19%" rowspan="3" valign="top"><strong class="asd"> &nbsp;<br></strong></td>
+                    <td width="65%" align="center" valign="top">
+                        <h6>If you have any query about this invoice, please contact us at</h6>
+                        <h6>Name, Email, Phone</h6></td>
+                    <td width="16%" valign="top"><h6 style="margin-bottom: 0;">
+                        <span style="text-decoration: dashed; padding-left: 100%;color: #000; border-bottom: 1px solid black;"></span>
+                    </h6>
+                        <h6 class="text-center"
+                        style="margin-top: 5px;">Signature and Seal</h6></td>
+                </tr>
+
+            </table> -->
+            <br>
+            <br>
+        </div>
+
+    </div>
+
+</section>
+</body>
+</html>

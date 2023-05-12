@@ -1,0 +1,250 @@
+{% load static %}   
+
+<!DOCTYPE html>
+<html lang="ar"> 
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"> 
+  {% if title %}   
+  <title>   {{title}}  </title>
+  {% else %} 
+  <title>ابراج مكة</title>
+  {% endif %}
+  
+  <meta content="" name="description">
+  <meta content="" name="keywords"> 
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png ' %}" rel="icon"> 
+  <!-- Google Fonts -->
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700'> 
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> 
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet"> 
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet"> 
+  <link href="{% static 'assets/css/font.css' %}" rel="stylesheet"> 
+ 
+<style>
+    #hero:before {
+      content: "";
+     background: rgb(255, 255, 255);
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  .carousel-indicators {
+    bottom: 0;
+    }
+    @media screen and (min-width: 768px)
+    {
+    .carousel-indicators {
+        bottom: 20px;
+    }
+    }
+    .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        z-index: 15;
+        width: 60%;
+        padding-left: 0;
+        margin-left: -30%;
+        text-align: center;
+        list-style: none;
+    }
+    ul, ol {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .carousel-indicators li {
+        height: 15px;
+        width: 15px;
+        border: 1px solid #EEE;
+    }
+    .carousel-indicators li {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 1px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: #000 \9;
+        background-color: rgba(0, 0, 0, 0);
+        border: 1px solid #fff;
+        border-radius: 10px;
+    }
+
+</style>
+</head> 
+<body style="direction: rtl;"> 
+  <!-- ======= Top Bar ======= -->
+  <!-- <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center" style="font-size: smaller;">
+        <a href="mailto:abrajmahka@gmail.com">abrajmahka@gmail.com </a><i class="bi bi-envelope-fill"> </i> &nbsp;
+        <a href="tel:+967776422223">+967776422223</a><i class="bi bi-phone-fill phone-icon"></i>
+      </div>
+      <div class="social-links d-none d-md-block">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=100070873264909" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section>  -->
+  <!-- ======= Header ======= -->
+  <header id="header"  class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between"> 
+      <h1 class="logo"><a href="{% url 'home' %}">أبراج مكة</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'home' %}">الرئيسية</a></li>
+          <li><a class="nav-link scrollto" href="#cta">عنا</a></li>
+          <li><a class="nav-link scrollto" href="#services">خدماتنا</a></li>
+          <!-- <li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
+          <li><a class="nav-link scrollto" href="#pricing">الاسعار</a></li>
+          <li><a class="nav-link scrollto" href="#notify">استعلم عن جواز</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'mandate' %}"> تفويض</a></li>
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li> -->
+          <li><a class="nav-link scrollto" href="#contact">تواصل معنا</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+  <div style="height: 2px;"></div> 
+
+  {% if news %}   
+  <div class="" style="width:100%; background-color: #cc1616; color: white;padding-top: 10px;margin-bottom: 2px;">
+    <marquee direction="right" style="width:100%;">
+      {% for new in news %}
+       {{new.content}}  &nbsp; * &nbsp; 
+     {% comment %} مرحبا بكم علي موقع ابراج مكة لخدمات الحج والعمره والتخليص الجمركي {% endcomment %}
+     {% endfor %}
+    </marquee>
+  </div> 
+  {% endif %}
+  <!-- ======= Hero Section ======= -->
+      {% block content %}
+
+      {% endblock content %}
+  </main><!-- End #main --> 
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>أبراج مكة</h3>
+              <p>
+                صنعاء شارع القدس <br>
+                yemen<br><br>
+                <strong>Phone:</strong> 00967-776422223<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>الاقسام</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">الــرئيـسية</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">عن ابراج مكة</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">الــخدمـــات</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">فــــروعــنا  </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">رؤيــــتنـا </a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4> خدماتنا</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">فــيزة العمل</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">الزيارة العائلية</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">الإقامة العائلية </a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">تـذاكر الطيران</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">خدمات اخري قريبا</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>اشترك معنا</h4>
+            <p>اشترك معنا ليصلك اخبار الوكالة للبريد الالكتروني</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="اشتراك">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy;  جميع الحقوق محفوظة <strong><span> </span></strong>. أبراج مكة
+      </div>
+      <div class="credits">
+       
+        <!-- Designed by <a href="">BootstrapMade</a> -->
+      </div>
+    </div>
+  </footer><!-- End Footer --> 
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div> --> 
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script> 
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script> 
+  <!-- GetButton.io widget --> 
+<!-- /GetButton.io widget -->
+</body> 
+</html>
+ 
+
+  
+  

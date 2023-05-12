@@ -1,0 +1,19 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    <p>
+       هل انت متاكد من تغير الحالة للعملاء المحددة؟
+    </p> 
+    <div class="form-row">
+        <div>
+            <label for="setDate">حدد التاريخ</label> 
+            <p class="datetime">              
+                <input type="text" name="setDate" value="2022-01-01"  class="vDateField"  id="setDate">
+            </div> 
+    </div> 
+    <input type="hidden" name="action" value="update_status" />
+    <input type="submit" name="apply" value="Update status" />
+</form>
+{% endblock %}

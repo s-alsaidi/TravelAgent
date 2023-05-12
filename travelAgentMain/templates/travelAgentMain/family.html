@@ -1,0 +1,75 @@
+{% extends 'travelAgentMain/base.html' %} 
+{% load static %}    
+{% block content %} 
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{message.tags}}">
+        {{message}}
+    </div>
+{% endfor  %} 
+{% endif %}  
+<main id="main"> 
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="{% url 'home' %}">الرئيسية</a></li>
+          <li>متطلبات الزيارة العائلية</li>
+        </ol>
+        <!-- <h2>Inner Page</h2> -->
+
+      </div>
+    </section><!-- End Breadcrumbs --> 
+    <section class="inner-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-12">
+            <div class="card">
+              <div class="card-header" style="font-weight: bold; font-size: small;">متطلبات الحصول على تأشيرة زيارة عائلية إلى المملكة العربية السعودية</div>
+              <div class="card-body">
+                <ul class="list-group" style="font-size: small;">
+                  <li class="list-group-item" >
+                    1-جواز السفر ساري المفعول                
+                  </li>
+                  <li class="list-group-item" >
+                    2-صورتين خلفية بيضاء 4×6
+                  </li>
+                  <li class="list-group-item" >
+                    3-صورة او بيانات مستند التأشيرة
+                  </li>
+                  <li class="list-group-item" >
+                    4-صورة الإقامة او الهوية السعودية لطالب الزيارة
+                  </li>
+                  <li class="list-group-item" >
+                    5-  اثاثبات الهوية للشخص المستدعى مع تحديد صلة القرابة
+                  </li> 
+                </ul>  
+
+              </div>
+              <!-- <div class="card-footer"></div> -->
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header" style="font-weight: bold; font-size: small;">تعليمات إضـــافية</div>
+            <div class="card-body">
+          <ul class="list-group" style="font-size: small;">
+           
+            <!-- <li class="list-group-item active" style="font-size: 20px; text-align: right;">تعليمات إضـــافية</li> -->
+            <!-- <li class="list-group-item" style="font-size: 15px;font-weight: bolder; text-align: right;"> -->
+            <!-- <ul> -->
+              <li class="list-group-item" > يجب الا تقل صلاحية الجواز عن ستة أشهر</li>           
+              <li class="list-group-item" > إثبات عزوبية للنساء التي بعد سن 15 عام والتي لم تتزوج بعد او اذن السفر اذا كانت متزوجة</li>
+               
+            </ul>            
+           
+          <!-- </ul> -->
+            </div>
+        </div>
+        <div class="card-footer"></div>
+      </div>
+        </div>
+      </div>
+    </section>  
+{% endblock content %}
